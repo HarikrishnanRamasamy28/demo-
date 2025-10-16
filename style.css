@@ -6,6 +6,7 @@
   font-family: Arial, sans-serif;
 }
 
+
 /* ========== Topbar & Header ========== */
 .topbar {
   position: sticky;
@@ -72,7 +73,7 @@
   font-size: 38px;
   background: none;
   border: none;
-  color: #fff;
+  color: red;
   cursor: pointer;
   transition: transform 0.3s ease;
 }
