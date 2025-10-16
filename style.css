@@ -6,6 +6,15 @@
   font-family: Arial, sans-serif;
 }
 
+html, body {
+  overflow-x: hidden;
+}
+.wrapper {
+  position: relative;
+  width: 100%;
+  overflow-x: hidden;
+}
+
 
 /* ========== Topbar & Header ========== */
 .topbar {
@@ -14,17 +23,19 @@
   z-index: 10;
   display: flex;
   align-items: center;
-  gap: 270px;
+  /* gap: 270px; */
+  justify-content: space-between; /* spread logo & hamburger / nav */
   padding: 15px 40px;
   background-color:rgb(31, 58, 80);
   color: #fff;
-  overflow: visible;
+  /* overflow: visible; */
+  width: 100%;
 }
 .header {
   display: flex;
   align-items: center;
   gap: 20px;
-  z-index: 20;
+  /* z-index: 20; */
 }
 .logo {
   display: flex;
@@ -44,13 +55,17 @@
 /* ========== Bus Animation ========== */
 .bus-container {
   position: absolute;
-  top: 15%;
-  left: 0;
-  transform: translateY(-50%);
-  overflow: visible;
+  /* top: 15%;
+  left: 0; */
+  top: 50%;
+  left: 50%;
+  /* transform: translateY(-50%); */
+  transform: translate(-50%, -50%);
+  /* overflow: visible; */
+  overflow: hidden;
   pointer-events: none;
   z-index: 200;
-  margin-left: 430px;
+  /* margin-left: 430px; */
 }
 .moving-bus {
   position: absolute;
@@ -63,7 +78,8 @@
     left: -160px;
   }
   100% {
-    left: calc(10% + 5px);
+    /* left: calc(10% + 5px); */
+    left: 100%;
   }
 }
 
@@ -83,6 +99,12 @@
 .navBar {
   display: block;
 }
+
+.navLinks {
+  width: 100%;
+  overflow-x: hidden;
+}
+
 .linkRight {
   display: flex;
   flex-direction: row;
@@ -90,6 +112,7 @@
   align-items: center;
   list-style: none;
 }
+
 .linkRight a {
   text-decoration: none;
   color: #fff;
@@ -169,27 +192,36 @@
 @media (max-width: 450px) {
   .topbar {
     flex-direction: column;
-    align-items: flex-start;
-    padding: 15px 20px;
-    gap: 20px;
+    /* align-items: flex-start; */
+    align-items: stretch;
+    padding: 15px 15px;
+    gap: 10px;
   }
   .logo {
     margin-left: 0;
   }
-  .hamburger {
+  /* .hamburger {
     display: block;
     z-index: 30;
     align-self: flex-end;
     margin-left: 140px;
     margin-bottom: 13px;
+  } */
+
+  .hamburger {
+    display: block;
+    align-self: flex-end;
+    margin: 0;
   }
+
   .navBar {
     display: none;
     width: 100%;
     /* background: #fff; */
-    padding: 15px 0;
-    border-radius: 6px;
+    /* padding: 15px 0;
+    border-radius: 6px; */
     box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    overflow: hidden;
   }
   .navBar.active {
     display: block !important;
@@ -204,31 +236,46 @@
   .linkRight button {
     background-color:rgb(223, 181, 104);
     color: #555;
+
+    width: 100%;
+    border-radius: 6px;
   }
 
   .linkRight a {
     color:white !important;
-    font-size: 18px;
+    /* font-size: 18px; */
+    color: #fff;
   }
-  .linkRight button {
+
+  /* .linkRight button {
     width: 100%;
     border-radius: 6px;
-  }
+  } */
+
   .dropdown-menu {
-    margin-left: 0;
+    /* margin-left: 0;
+    position: relative;
+    top: 0; */
     position: relative;
     top: 0;
+    left: 0;
+    background-color: rgb(31, 58, 80);
+    border-radius: 0;
+    box-shadow: none;
   }
 
   .dropdown-menu li a {
     background-color:rgb(223, 181, 104) !important;
     color:#555 !important;
   }
-  
+
+    /* .bus-container {
+    display: none;
+  }
+   */
 
   /* Bus container adjustments (optional or hide) */
   .bus-container {
-    /* You may hide the bus on small screens */
     position: absolute;
     top: auto;
     bottom: 16%;
@@ -238,7 +285,7 @@
   }
     .moving-bus {
     position: relative;
-    height: 50px; /* smaller on mobile */
+    height: 50px; 
     animation: drive-mobile 4s linear infinite;
     left: 0;
     top: 0;
